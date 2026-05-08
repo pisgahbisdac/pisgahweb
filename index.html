@@ -2,9 +2,10 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pisgah Bisdac Church</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Pisgah Bisdac Church | Home to Belong</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -12,449 +13,518 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: 'Inter', sans-serif;
-            background: #fefaf5;
-            color: #2e2a28;
-            line-height: 1.5;
+            background-color: #fefcf8;
+            color: #2c2a27;
+            line-height: 1.4;
         }
-        :root {
-            --primary-green: #2c3e2f;
-            --accent-gold: #c59b3c;
-            --light-bg: #fefaf5;
-        }
+
         .container {
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 24px;
         }
+
+        /* typography */
+        h1, h2, h3, h4 {
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
         h2 {
             font-size: 2rem;
-            margin-bottom: 1.5rem;
-            border-left: 5px solid var(--accent-gold);
+            margin-bottom: 1.25rem;
+            border-left: 6px solid #c9a03d;
             padding-left: 1rem;
-            color: var(--primary-green);
+            color: #2c4b32;
         }
-        .btn {
+
+        .section {
+            padding: 4rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        /* buttons */
+        .btn-primary {
+            background: #2c5f3a;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 0.9rem;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            background: var(--primary-green);
-            color: white;
-            padding: 10px 24px;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: 600;
-            border: none;
+            gap: 10px;
             cursor: pointer;
             transition: 0.2s;
+            text-decoration: none;
         }
+
         .btn-outline {
             background: transparent;
-            border: 2px solid var(--primary-green);
-            color: var(--primary-green);
+            border: 2px solid #2c5f3a;
+            color: #2c5f3a;
         }
+
+        .btn-primary:hover {
+            background: #c9a03d;
+            transform: translateY(-2px);
+        }
+
+        /* hero area */
         .hero {
-            background: linear-gradient(135deg, #f8f2e7, #e9e0d3);
+            background: linear-gradient(135deg, #f5efdf 0%, #e5dac5 100%);
             border-radius: 0 0 48px 48px;
             padding: 2.5rem 0 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-content {
             text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
         }
+
         .church-name {
-            font-size: 2.8rem;
-            font-weight: 800;
-            background: linear-gradient(120deg, #3a5e3a, #7d5d2e);
-            background-clip: text;
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(120deg, #2b5b38, #b87c2e);
             -webkit-background-clip: text;
+            background-clip: text;
             color: transparent;
+            letter-spacing: -0.02em;
         }
+
+        .tagline {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #5a4a2e;
+            margin: 0.75rem 0 1rem;
+        }
+
         .verse {
-            background: rgba(255,248,235,0.9);
+            font-style: italic;
+            background: rgba(255, 248, 235, 0.9);
             display: inline-block;
             padding: 0.6rem 1.8rem;
             border-radius: 60px;
-            margin: 1rem 0;
-            font-style: italic;
+            font-size: 0.95rem;
+            margin: 1rem 0 1.2rem;
+            color: #3a5a2a;
+            font-weight: 500;
         }
-        .card {
+
+        .watch-live {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0 1rem;
+        }
+
+        .quick-access {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.2rem;
+            margin: 2rem 0 0.5rem;
+        }
+
+        .quick-card {
             background: white;
-            border-radius: 28px;
-            padding: 1.5rem;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-            border: 1px solid #f0e4d4;
+            padding: 0.5rem 1.4rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            text-decoration: none;
+            color: #2c5f3a;
             transition: 0.2s;
         }
-        .card i {
-            font-size: 2rem;
-            color: var(--accent-gold);
-            margin-bottom: 1rem;
+
+        .quick-card i {
+            margin-right: 8px;
+            color: #c9a03d;
         }
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+
+        .quick-card:hover {
+            background: #ede1ce;
+            transform: translateY(-2px);
         }
+
+        .promo-banner {
+            background: #f2ebdd;
+            border-radius: 60px;
+            display: inline-block;
+            padding: 0.4rem 1.5rem;
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* schedule table */
+        .schedule-wrapper {
+            overflow-x: auto;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 12px 24px -12px rgba(0,0,0,0.1);
+            margin: 2rem 0 1rem;
+        }
+
         .schedule-table {
             width: 100%;
             border-collapse: collapse;
-            background: white;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            font-size: 0.9rem;
         }
-        .schedule-table th, .schedule-table td {
-            padding: 12px 16px;
-            text-align: left;
-            border-bottom: 1px solid #ede0d2;
-        }
+
         .schedule-table th {
-            background: var(--primary-green);
+            background: #2c4b32;
             color: white;
-        }
-        .admin-login-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--primary-green);
-            color: white;
-            border: none;
-            padding: 10px 18px;
-            border-radius: 40px;
-            font-weight: 600;
-            cursor: pointer;
-            z-index: 999;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .admin-toolbar {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #1e2a1c;
-            padding: 10px 18px;
-            border-radius: 60px;
-            display: flex;
-            gap: 12px;
-            z-index: 999;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-        .admin-toolbar button {
-            background: var(--accent-gold);
-            border: none;
-            padding: 6px 14px;
-            border-radius: 40px;
-            font-weight: 600;
-            cursor: pointer;
-        }
-        .admin-toolbar .danger {
-            background: #b34e4e;
-            color: white;
-        }
-        .editable[contenteditable="true"] {
-            background-color: #fff6e0;
-            outline: 1px dashed var(--accent-gold);
-            border-radius: 6px;
-            padding: 2px 6px;
-            cursor: text;
-        }
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-        }
-        .modal-content {
-            background: white;
-            padding: 2rem;
-            border-radius: 32px;
-            width: 300px;
+            padding: 1rem;
+            font-weight: 700;
             text-align: center;
         }
-        .modal-content input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 40px;
-            border: 1px solid #ccc;
+
+        .schedule-table td {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid #eedfcb;
+            font-weight: 500;
+        }
+
+        .schedule-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .room-name {
+            font-size: 0.8rem;
+            color: #8b6f3c;
+            display: block;
+            font-weight: 400;
+        }
+
+        .lihat-semua {
+            text-align: right;
+            margin-top: 0.75rem;
+        }
+
+        /* grid cards */
+        .grid-2, .grid-3, .grid-4 {
+            display: grid;
+            gap: 2rem;
+        }
+        .grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+        .grid-3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+
+        .card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem;
+            box-shadow: 0 12px 24px -12px rgba(0,0,0,0.08);
+            transition: all 0.2s;
+            border: 1px solid #efe2d0;
+        }
+
+        .card i {
+            font-size: 2rem;
+            color: #c9a03d;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .youtube-card {
+            background: #1f2c1c;
+            color: white;
+            border-radius: 32px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .youtube-card i {
+            font-size: 3rem;
+            color: #ff3e2e;
+        }
+        .info-kegiatan {
+            background: #ffffffd9;
+        }
+        .date-badge {
+            background: #e8dccb;
+            border-radius: 30px;
+            padding: 0.2rem 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .location-block {
+            background: #2c4b32;
+            color: white;
+            border-radius: 32px;
+            padding: 1.8rem;
         }
         .footer {
-            background: #1f2a1c;
-            color: #e2d9cf;
-            padding: 2rem;
+            background: #1f2a1a;
+            color: #ddd2bd;
+            padding: 2.5rem 0 2rem;
+            border-radius: 32px 32px 0 0;
+            margin-top: 2rem;
+        }
+        .testimony {
+            background: #fef4e8;
+            border-radius: 28px;
+            padding: 1.5rem;
+        }
+        .faq-list {
+            margin-top: 1rem;
+        }
+        .faq-question {
+            font-weight: 700;
+            margin: 1rem 0 0.3rem;
+            color: #2c4b32;
+            font-size: 1rem;
+        }
+        .ruti {
+            background: #f3ecdf;
+            border-radius: 28px;
+            padding: 1.2rem;
             text-align: center;
-            margin-top: 3rem;
+            font-weight: 500;
         }
         @media (max-width: 768px) {
             .church-name { font-size: 2rem; }
-            .container { padding: 0 16px; }
+            .container { padding: 0 20px; }
+            .section { padding: 2.5rem 0; }
+            h2 { font-size: 1.6rem; }
         }
     </style>
 </head>
 <body>
 
-<!-- Tombol login admin (muncul selalu) -->
-<button id="adminLoginBtn" class="admin-login-btn"><i class="fas fa-lock"></i> Admin Login</button>
-
-<!-- Admin Toolbar (hidden until login) -->
-<div id="adminToolbar" style="display: none;" class="admin-toolbar">
-    <button id="toggleEditBtn"><i class="fas fa-edit"></i> Edit Mode</button>
-    <button id="saveBtn"><i class="fas fa-save"></i> Simpan</button>
-    <button id="layoutBtn"><i class="fas fa-columns"></i> Layout</button>
-    <button id="resetBtn" class="danger"><i class="fas fa-undo"></i> Reset</button>
-    <button id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+<div class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="church-name">PISGAH BISDAC CHURCH</h1>
+            <div class="tagline">A Home to Belong. A Family to Grow. A Mission to Fulfill.</div>
+            <div class="verse">
+                <i class="fas fa-hands-praying"></i> "Sebab di mana dua atau tiga orang berkumpul dalam nama-Ku, di situ Aku ada di tengah-tengah mereka." — Matius 18:20
+            </div>
+            <div class="watch-live">
+                <a href="#" class="btn-primary"><i class="fas fa-play-circle"></i> TONTON SEKARANG</a>
+                <a href="#" class="btn-primary btn-outline"><i class="fas fa-users"></i> Join Live Service</a>
+            </div>
+            <!-- akses cepat -->
+            <div class="quick-access">
+                <a href="#" class="quick-card"><i class="fas fa-praying-hands"></i> Doa & Pemohon</a>
+                <a href="#" class="quick-card"><i class="fas fa-cloud-upload-alt"></i> Pembubaran Online</a>
+                <a href="#" class="quick-card"><i class="fas fa-share-alt"></i> Berbagi dalam Komunitas</a>
+                <a href="#" class="quick-card"><i class="fas fa-envelope"></i> Hubungi Kami</a>
+            </div>
+            <div class="promo-banner">
+                <i class="fas fa-microphone-alt"></i> WAKTA JEMAAT: Pembukaan malam ini akan menggalakkan wakil pengikut bagi semua hari. <strong>BACA WAJAH TERBAIK!</strong>
+            </div>
+        </div>
+    </div>
 </div>
 
-<!-- Konten website akan diisi oleh JavaScript -->
-<div id="pageContent"></div>
-<div class="footer" id="footer">
-    <p>&copy; 2025 Pisgah Bisdac Church — Melayani dengan sepenuh hati.</p>
-</div>
+<main class="container">
 
-<script>
-    let token = null;
-    let editMode = false;
-    let currentContent = null;
-    let isAdmin = false;
+    <!-- Jadwal Ibadah -->
+    <section class="section">
+        <h2><i class="fas fa-calendar-week"></i> JADWAL IBADAH</h2>
+        <div class="schedule-wrapper">
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>IBADAH UMUM 1</th>
+                        <th>IBADAH UMUM 2</th>
+                        <th>IBADAH YOUTH</th>
+                        <th>IBADAH DOA</th>
+                        <th>IBADAH ANAK</th>
+                        <th>IBADAH ONLINE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>07.00 WIB<br><span class="room-name">Masa Seniurya</span></td>
+                        <td>10.00 WIB<br><span class="room-name">Masa Seniurya</span></td>
+                        <td>17.00 WIB<br><span class="room-name">Youtu Chapt</span></td>
+                        <td>19.00 WIB<br><span class="room-name">Prayer Room</span></td>
+                        <td>10.00 WIB<br><span class="room-name">Kuin Chosen</span></td>
+                        <td>10.00 WIB<br><span class="room-name">Youtu Chosen</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="lihat-semua">
+            <a href="#" class="btn-primary btn-outline" style="padding: 8px 24px;"><i class="fas fa-list-ul"></i> LIHAT SEMUA JADWAL</a>
+        </div>
+    </section>
 
-    // Helper API
-    async function apiCall(url, method, body, needAuth = false) {
-        const headers = { 'Content-Type': 'application/json' };
-        if (needAuth && token) headers['Authorization'] = `Bearer ${token}`;
-        const res = await fetch(url, { method, headers, body: body ? JSON.stringify(body) : undefined });
-        return res.json();
-    }
+    <!-- YouTube & Faith -->
+    <section class="section">
+        <div class="grid-2">
+            <div class="youtube-card">
+                <i class="fab fa-youtube"></i>
+                <h3 style="margin: 0.5rem 0;">PISGAH BISDAC CHURCH</h3>
+                <p>Sekianlah kebaikan, pojin penyembahan, keraksaan, dan konten inspiratif lainnya di channel YouTube kami.</p>
+                <a href="#" class="btn-primary" style="background: #cd3c2c; margin-top: 1rem; display: inline-flex;"><i class="fab fa-youtube"></i> KUNJUNGI CHANNEL</a>
+            </div>
+            <div class="card" style="text-align: center; background: #fcf6ed;">
+                <i class="fas fa-dove"></i>
+                <h3>GOD IS FAITHFUL</h3>
+                <p>SEE HIS GOODNESS</p>
+                <div class="promo-banner" style="margin-top: 1rem;">LIAH SEMUA JADWAL</div>
+            </div>
+        </div>
+    </section>
 
-    // Tampilkan konten dari server
-    async function loadContent() {
-        const res = await apiCall('/api/content', 'GET', null, false);
-        if (res.success) {
-            currentContent = res.content;
-            renderPage(currentContent);
-        } else {
-            document.getElementById('pageContent').innerHTML = '<p>Gagal memuat data.</p>';
-        }
-    }
+    <!-- INFO & KEGIATAN (Youth Camp, Retreat, Misi, Worship, Community Care) -->
+    <section class="section">
+        <h2><i class="fas fa-info-circle"></i> INFO & KEGIATAN</h2>
+        <div class="grid-3">
+            <div class="card">
+                <i class="fas fa-campground"></i>
+                <h3>YOUTH CAMP 2025</h3>
+                <p>Gemeet yang berikutan, dan konten inspiratif lainnya di channel YouTube kami.</p>
+                <div class="date-badge">YOUTH CAMP • 12-15 Juli 2025</div>
+                <p style="margin-top: 10px; font-size:0.85rem;">Dipublikasikan</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-family"></i>
+                <h3>RETREAT KELEUARGA</h3>
+                <p>12-15 Juli 2025<br>Dipublikasikan</p>
+                <i class="fas fa-calendar-alt" style="font-size:1rem;"></i> <span>Kebersamaan rohani</span>
+            </div>
+            <div class="card">
+                <i class="fas fa-city"></i>
+                <h3>MISI KOTA</h3>
+                <p>Kasih untuk Semana<br>13 Juli 2025</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-music"></i>
+                <h3>WORSHIP</h3>
+                <p>Pemenuhan yang berkesan di hadapan Tuhan</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-hands-helping"></i>
+                <h3>COMMUNITY CARE</h3>
+                <p>Menghadiri dan melayani dengan tangen terbaik</p>
+            </div>
+        </div>
+    </section>
 
-    function renderPage(content) {
-        const container = document.getElementById('pageContent');
-        container.innerHTML = `
-            <div class="hero">
-                <div class="container">
-                    <h1 class="editable-text" data-field="churchName">${escapeHtml(content.churchName)}</h1>
-                    <p class="editable-text" data-field="tagline">${escapeHtml(content.tagline)}</p>
-                    <div class="verse editable-text" data-field="verse">${content.verse}</div>
-                    <div class="editable-text" data-field="promoText" style="margin-top: 1rem;">${escapeHtml(content.promoText)}</div>
-                    <div style="margin-top: 1.5rem;">
-                        <a href="#" class="btn"><i class="fas fa-play-circle"></i> TONTON SEKARANG</a>
-                        <a href="#" class="btn btn-outline"><i class="fas fa-users"></i> Join Live Service</a>
-                    </div>
+    <!-- TENANG KAMI & LOKASI -->
+    <section class="section">
+        <div class="grid-2">
+            <div class="card" style="background: #f7f1e6;">
+                <i class="fas fa-heartbeat"></i>
+                <h3>TENANG KAMI</h3>
+                <p>Pingat Bondie Church adalah sebuah place yang menjadi tempat untuk membangun komunitas yang berdaya saing. Kami ingin menyampaikan kepada Anda, komuniti, dan keluarga kami.</p>
+            </div>
+            <div class="location-block">
+                <i class="fas fa-map-marker-alt" style="font-size: 1.8rem;"></i>
+                <h3 style="margin: 0.5rem 0 0.2rem;">PISGAH BISDAC CHURCH</h3>
+                <p>Jl. Raya Saline No. 7 Surabaya, Indonesia<br>
+                (031) 1234 5678 | info@pisgahbisdac.org</p>
+                <hr style="margin: 1rem 0; background: #b98f4b;">
+                <h4>WAKTU LAYANAN</h4>
+                <p>Sen - Sab: 09.00 - 17.00 WIB<br>
+                Minggu: 06.00 - 12.00 WIB</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- KESAKSIAN (testimony) -->
+    <section class="section">
+        <h2><i class="fas fa-chalkboard-user"></i> KESAKSIAN</h2>
+        <div class="testimony">
+            <ul style="list-style: none; display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between;">
+                <li style="flex:1; min-width:180px;"><i class="fas fa-check-circle" style="color:#c9a03d;"></i> "Saya memutuskan aman dan pikiranku."</li>
+                <li style="flex:1; min-width:180px;"><i class="fas fa-check-circle" style="color:#c9a03d;"></i> "Memahami komunitas yang sehat dan positif."</li>
+                <li style="flex:1; min-width:180px;"><i class="fas fa-check-circle" style="color:#c9a03d;"></i> "Mengerti setiap jemaat merasakan kesuksesan."</li>
+                <li style="flex:1; min-width:180px;"><i class="fas fa-check-circle" style="color:#c9a03d;"></i> "Melayani masyarakat dengan kasih dan integritas."</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- PERANYAAN UMUM (FAQ) -->
+    <section class="section">
+        <h2><i class="fas fa-question-circle"></i> PERANYAAN UMUM</h2>
+        <div class="faq-list grid-2" style="gap: 1rem;">
+            <div>
+                <div class="faq-question">❓ Bagaimana cara menghadiri lembaran?</div>
+                <p>Anda dapat hadir langsung ke gereja di Jl. Raya Saline No. 7 atau streaming online via YouTube setiap Minggu pukul 10.00 WIB.</p>
+            </div>
+            <div>
+                <div class="faq-question">❓ Bagaimana cara memberikan pembersihan?</div>
+                <p>Persembahan dapat disalurkan melalui kotak persembahan, transfer bank, atau platform online resmi kami.</p>
+            </div>
+            <div>
+                <div class="faq-question">❓ Bagaimana cara mendidik anak-anak?</div>
+                <p>Kami memiliki program Ibadah Anak (Kuin Chosen) setiap Minggu pukul 10.00 serta kelas parenting berkala.</p>
+            </div>
+            <div>
+                <div class="faq-question">❓ Bagaimana cara meningkatkan nilai diri?</div>
+                <p>Bergabung dalam kelompok sel, pelayanan, dan sesi konseling rohani yang tersedia setiap hari Rabu.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- KAMI DI SINI UNTUK ANDA -->
+    <div style="background: #e9dfce; border-radius: 48px; padding: 2rem; text-align: center; margin: 1.5rem 0 2rem;">
+        <i class="fas fa-hand-holding-heart" style="font-size: 2.5rem; color: #2c5f3a;"></i>
+        <h3 style="font-size: 1.8rem;">KAMI DI SINI UNTUK ANDA</h3>
+        <p style="font-size: 1.1rem;">Terhubung. Berdoa. Bertumbuh.<br>Kami berjalan bersama Anda dalam masa.<br>Silahkan hubungi kami jika terdapat perlembagaan dan Anda.</p>
+        <a href="#" class="btn-primary" style="background: #b87c2e; margin-top: 0.8rem;"><i class="fas fa-envelope-open-text"></i> Hubungi Kami Sekarang</a>
+    </div>
+
+    <!-- COMMUNITY CARE + RUTI KAMI -->
+    <div class="grid-2" style="margin-bottom: 2rem;">
+        <div class="card" style="background: #f9f2e5;">
+            <i class="fas fa-hand-sparkles"></i>
+            <h3>COMMUNITY CARE</h3>
+            <p>Menghadiri dan melayani dengan tangen terbaik. Bergabung menjadi relawan dan memberi dampak positif.</p>
+        </div>
+        <div class="ruti">
+            <i class="fas fa-clock"></i> <strong>RUTI KAMI</strong><br>
+            01.03.2024 14:57 &nbsp;|&nbsp; 01.03.2024 16:30<br>
+            <span style="font-size: 0.8rem;">Jadwal rutin persekutuan doa dan konseling</span>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem;">
+            <div>
+                <h3 style="color: #e7cf9a;">PISGAH BISDAC CHURCH</h3>
+                <p>Jl. Raya Saline No. 7 Surabaya<br>Telp. (031) 1234 5678</p>
+            </div>
+            <div>
+                <h4>Media Sosial</h4>
+                <div style="display: flex; gap: 1rem; font-size: 1.5rem;">
+                    <a href="#" style="color:#ddc896;"><i class="fab fa-youtube"></i></a>
+                    <a href="#" style="color:#ddc896;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="color:#ddc896;"><i class="fab fa-facebook"></i></a>
                 </div>
             </div>
-            <div class="container">
-                <h2><i class="fas fa-calendar-alt"></i> JADWAL IBADAH</h2>
-                <table class="schedule-table">
-                    <thead><tr><th>Ibadah</th><th>Waktu</th><th>Lokasi</th></tr></thead>
-                    <tbody id="scheduleBody">
-                        ${content.schedule.map(row => `<tr><td class="editable-schedule">${escapeHtml(row[0])}</td><td class="editable-schedule">${escapeHtml(row[1])}</td><td class="editable-schedule">${escapeHtml(row[2])}</td></tr>`).join('')}
-                    </tbody>
-                </table>
-
-                <h2 style="margin-top: 3rem;">LAYANAN KAMI</h2>
-                <div class="grid-3" id="ministriesGrid">
-                    ${content.ministries.map(m => `
-                        <div class="card">
-                            <i class="${m.icon}"></i>
-                            <h3 class="editable-ministry-title">${escapeHtml(m.title)}</h3>
-                            <p class="editable-ministry-desc">${escapeHtml(m.desc)}</p>
-                        </div>
-                    `).join('')}
-                </div>
-
-                <h2 style="margin-top: 3rem;">TENTANG KAMI</h2>
-                <div class="grid-3" id="aboutGrid">
-                    ${content.aboutCards.map(c => `
-                        <div class="card">
-                            <i class="${c.icon}"></i>
-                            <h3 class="editable-about-title">${escapeHtml(c.title)}</h3>
-                            <p class="editable-about-desc">${escapeHtml(c.desc)}</p>
-                        </div>
-                    `).join('')}
-                </div>
-
-                <div style="background: #fcf7f0; border-radius: 40px; padding: 2rem; text-align: center; margin: 3rem 0;">
-                    <i class="fas fa-heart" style="color: var(--accent-gold); font-size: 2rem;"></i>
-                    <h3>KAMI DI SINI UNTUK ANDA</h3>
-                    <p>Terhubung. Berdoa. Bertumbuh. Kami berjalan bersama Anda.</p>
-                </div>
+            <div>
+                <p>Terhubung. Berdoa. Bertumbuh.</p>
+                <p>© 2025 Pisgah Bisdac Church | Kasih untuk Semua</p>
             </div>
-        `;
-        // Terapkan layout yang tersimpan
-        applyLayout(content.layout);
-        if (editMode && isAdmin) enableEditing(true);
-    }
+        </div>
+    </div>
+</footer>
 
-    function escapeHtml(str) {
-        return str.replace(/[&<>]/g, function(m) {
-            if (m === '&') return '&amp;';
-            if (m === '<') return '&lt;';
-            if (m === '>') return '&gt;';
-            return m;
-        }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
-            return c;
-        });
-    }
-
-    function applyLayout(layout) {
-        const ministryGrid = document.getElementById('ministriesGrid');
-        const aboutGrid = document.getElementById('aboutGrid');
-        if (ministryGrid && layout.ministryGrid) {
-            ministryGrid.style.gridTemplateColumns = `repeat(${layout.ministryGrid}, 1fr)`;
-        }
-        if (aboutGrid && layout.aboutGrid) {
-            aboutGrid.style.gridTemplateColumns = `repeat(${layout.aboutGrid}, 1fr)`;
-        }
-        const root = document.documentElement;
-        if (layout.theme === 'green') {
-            root.style.setProperty('--primary-green', '#2c3e2f');
-            root.style.setProperty('--accent-gold', '#c59b3c');
-        } else if (layout.theme === 'blue') {
-            root.style.setProperty('--primary-green', '#1e4a6b');
-            root.style.setProperty('--accent-gold', '#9ab3d5');
-        } else if (layout.theme === 'burgundy') {
-            root.style.setProperty('--primary-green', '#6b2e3e');
-            root.style.setProperty('--accent-gold', '#cfa87c');
-        }
-    }
-
-    function enableEditing(enable) {
-        editMode = enable;
-        const selectors = '.editable-text, .editable-schedule, .editable-ministry-title, .editable-ministry-desc, .editable-about-title, .editable-about-desc';
-        document.querySelectorAll(selectors).forEach(el => {
-            if (enable) {
-                el.setAttribute('contenteditable', 'true');
-                el.classList.add('editable');
-            } else {
-                el.removeAttribute('contenteditable');
-                el.classList.remove('editable');
-            }
-        });
-    }
-
-    async function saveAllChanges() {
-        if (!isAdmin) return alert('Anda harus login sebagai admin');
-        // 1. Simpan teks biasa
-        const fields = ['churchName', 'tagline', 'verse', 'promoText'];
-        for (let field of fields) {
-            const el = document.querySelector(`[data-field="${field}"]`);
-            if (el) {
-                await apiCall('/api/update-content', 'POST', { field, value: el.innerHTML }, true);
-            }
-        }
-        // 2. Simpan schedule
-        const scheduleRows = [...document.querySelectorAll('#scheduleBody tr')].map(tr => [...tr.querySelectorAll('td')].map(td => td.innerText));
-        await apiCall('/api/update-content', 'POST', { field: 'schedule', value: scheduleRows }, true);
-        // 3. Simpan ministries
-        const ministries = [...document.querySelectorAll('#ministriesGrid .card')].map(card => ({
-            icon: card.querySelector('i').className,
-            title: card.querySelector('.editable-ministry-title').innerText,
-            desc: card.querySelector('.editable-ministry-desc').innerText
-        }));
-        await apiCall('/api/update-content', 'POST', { field: 'ministries', value: ministries }, true);
-        // 4. Simpan aboutCards
-        const aboutCards = [...document.querySelectorAll('#aboutGrid .card')].map(card => ({
-            icon: card.querySelector('i').className,
-            title: card.querySelector('.editable-about-title').innerText,
-            desc: card.querySelector('.editable-about-desc').innerText
-        }));
-        await apiCall('/api/update-content', 'POST', { field: 'aboutCards', value: aboutCards }, true);
-        alert('Semua perubahan tersimpan!');
-    }
-
-    async function resetToDefault() {
-        if (!isAdmin) return;
-        if (confirm('Reset semua data ke default? Semua perubahan akan hilang.')) {
-            await apiCall('/api/reset', 'POST', {}, true);
-            loadContent();
-        }
-    }
-
-    // Login Modal
-    function showLoginModal() {
-        const modalDiv = document.createElement('div');
-        modalDiv.className = 'modal';
-        modalDiv.id = 'loginModal';
-        modalDiv.innerHTML = `
-            <div class="modal-content">
-                <i class="fas fa-lock" style="font-size: 2rem; color:var(--accent-gold);"></i>
-                <h3>Admin Login</h3>
-                <input type="text" id="loginUsername" placeholder="Username" value="admin">
-                <input type="password" id="loginPassword" placeholder="Password">
-                <button id="modalLoginBtn" class="btn" style="background: var(--primary-green); width:100%;">Masuk</button>
-                <button id="modalCloseBtn" style="margin-top: 10px; background:transparent; border:none;">Tutup</button>
-            </div>
-        `;
-        document.body.appendChild(modalDiv);
-        document.getElementById('modalLoginBtn').onclick = async () => {
-            const username = document.getElementById('loginUsername').value;
-            const password = document.getElementById('loginPassword').value;
-            const res = await apiCall('/api/login', 'POST', { username, password }, false);
-            if (res.success) {
-                token = res.token;
-                isAdmin = true;
-                document.getElementById('adminLoginBtn').style.display = 'none';
-                document.getElementById('adminToolbar').style.display = 'flex';
-                modalDiv.remove();
-                alert('Login berhasil! Klik Edit Mode untuk mulai mengedit.');
-            } else {
-                alert('Login gagal, periksa username/password');
-            }
-        };
-        document.getElementById('modalCloseBtn').onclick = () => modalDiv.remove();
-    }
-
-    // Layout modal
-    function showLayoutModal() {
-        const currentLayout = currentContent.layout;
-        const newMinistry = prompt('Jumlah kolom Ministries (2/3/4):', currentLayout.ministryGrid);
-        const newAbout = prompt('Jumlah kolom About (2/3):', currentLayout.aboutGrid);
-        const theme = prompt('Tema (green/blue/burgundy):', currentLayout.theme);
-        if (newMinistry && newAbout && theme) {
-            apiCall('/api/update-layout', 'POST', { ministryGrid: newMinistry, aboutGrid: newAbout, theme }, true);
-            loadContent(); // reload untuk terapkan layout
-        }
-    }
-
-    // Event listeners setelah DOM siap
-    document.addEventListener('DOMContentLoaded', () => {
-        loadContent();
-
-        document.getElementById('adminLoginBtn').onclick = showLoginModal;
-
-        document.getElementById('toggleEditBtn').onclick = () => {
-            if (!isAdmin) return alert('Anda belum login');
-            enableEditing(!editMode);
-        };
-        document.getElementById('saveBtn').onclick = saveAllChanges;
-        document.getElementById('resetBtn').onclick = resetToDefault;
-        document.getElementById('layoutBtn').onclick = showLayoutModal;
-        document.getElementById('logoutBtn').onclick = () => {
-            token = null;
-            isAdmin = false;
-            editMode = false;
-            document.getElementById('adminToolbar').style.display = 'none';
-            document.getElementById('adminLoginBtn').style.display = 'flex';
-            enableEditing(false);
-            alert('Anda telah logout.');
-        };
-    });
-</script>
 </body>
 </html>
