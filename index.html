@@ -3,143 +3,354 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pisgah Bisdac Church | CMS Backend</title>
+    <title>Pisgah Bisdac Church</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Gaya sama seperti sebelumnya, tapi sederhana */
-        * { margin:0; padding:0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #fefaf5; color: #2e2a28; }
-        :root { --primary-green: #2c3e2f; --accent-gold: #c59b3c; }
-        .container { max-width:1280px; margin:0 auto; padding:0 24px; }
-        .btn { background: var(--primary-green); color:white; padding:10px 24px; border-radius:40px; text-decoration:none; display:inline-flex; align-items:center; gap:8px; }
-        .hero { background: linear-gradient(135deg, #f8f2e7, #e9e0d3); border-radius: 0 0 48px 48px; padding: 2rem 0; }
-        .card { background: white; border-radius: 28px; padding: 1.5rem; box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
-        .admin-toolbar { position: fixed; bottom:20px; right:20px; background:#1e2a1e; color:white; padding: 10px 18px; border-radius: 60px; display: flex; gap: 12px; z-index: 999; }
-        .editable[contenteditable="true"] { background:#fff6e0; outline:1px dashed gold; border-radius: 6px; padding: 2px 4px; }
-        .grid-3 { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); }
-        .schedule-table { width:100%; border-collapse: collapse; background: white; border-radius: 24px; overflow: hidden; }
-        .schedule-table th, .schedule-table td { padding: 12px; border-bottom: 1px solid #eee; text-align: left; }
-        .login-overlay { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; z-index: 10000; }
-        .login-card { background: white; padding: 2rem; border-radius: 32px; width: 300px; text-align: center; }
-        input { padding: 10px; margin: 8px 0; width: 100%; border-radius: 40px; border:1px solid #ccc; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fefaf5;
+            color: #2e2a28;
+            line-height: 1.5;
+        }
+        :root {
+            --primary-green: #2c3e2f;
+            --accent-gold: #c59b3c;
+            --light-bg: #fefaf5;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--accent-gold);
+            padding-left: 1rem;
+            color: var(--primary-green);
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary-green);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-green);
+            color: var(--primary-green);
+        }
+        .hero {
+            background: linear-gradient(135deg, #f8f2e7, #e9e0d3);
+            border-radius: 0 0 48px 48px;
+            padding: 2.5rem 0 3rem;
+            text-align: center;
+        }
+        .church-name {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(120deg, #3a5e3a, #7d5d2e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .verse {
+            background: rgba(255,248,235,0.9);
+            display: inline-block;
+            padding: 0.6rem 1.8rem;
+            border-radius: 60px;
+            margin: 1rem 0;
+            font-style: italic;
+        }
+        .card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            border: 1px solid #f0e4d4;
+            transition: 0.2s;
+        }
+        .card i {
+            font-size: 2rem;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .schedule-table th, .schedule-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid #ede0d2;
+        }
+        .schedule-table th {
+            background: var(--primary-green);
+            color: white;
+        }
+        .admin-login-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .admin-toolbar {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #1e2a1c;
+            padding: 10px 18px;
+            border-radius: 60px;
+            display: flex;
+            gap: 12px;
+            z-index: 999;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .admin-toolbar button {
+            background: var(--accent-gold);
+            border: none;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .admin-toolbar .danger {
+            background: #b34e4e;
+            color: white;
+        }
+        .editable[contenteditable="true"] {
+            background-color: #fff6e0;
+            outline: 1px dashed var(--accent-gold);
+            border-radius: 6px;
+            padding: 2px 6px;
+            cursor: text;
+        }
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+        }
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 32px;
+            width: 300px;
+            text-align: center;
+        }
+        .modal-content input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 40px;
+            border: 1px solid #ccc;
+        }
+        .footer {
+            background: #1f2a1c;
+            color: #e2d9cf;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        @media (max-width: 768px) {
+            .church-name { font-size: 2rem; }
+            .container { padding: 0 16px; }
+        }
     </style>
 </head>
 <body>
 
-<div id="loginModal" style="display:flex;" class="login-overlay">
-    <div class="login-card">
-        <i class="fas fa-lock" style="font-size: 2rem; color:var(--accent-gold);"></i>
-        <h3>Admin Login</h3>
-        <input type="text" id="username" placeholder="Username" value="admin">
-        <input type="password" id="password" placeholder="Password">
-        <button id="loginBtn" class="btn" style="background:var(--primary-green); border:none;">Login</button>
-    </div>
+<!-- Tombol login admin (muncul selalu) -->
+<button id="adminLoginBtn" class="admin-login-btn"><i class="fas fa-lock"></i> Admin Login</button>
+
+<!-- Admin Toolbar (hidden until login) -->
+<div id="adminToolbar" style="display: none;" class="admin-toolbar">
+    <button id="toggleEditBtn"><i class="fas fa-edit"></i> Edit Mode</button>
+    <button id="saveBtn"><i class="fas fa-save"></i> Simpan</button>
+    <button id="layoutBtn"><i class="fas fa-columns"></i> Layout</button>
+    <button id="resetBtn" class="danger"><i class="fas fa-undo"></i> Reset</button>
+    <button id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
 </div>
 
-<div id="adminToolbar" style="display:none;" class="admin-toolbar">
-    <button id="toggleEditBtn" style="background:gold; border:none; padding:6px 12px; border-radius: 40px;">Edit Mode</button>
-    <button id="saveBtn" style="background:#4c9f70; border:none; padding:6px 12px;">Simpan</button>
-    <button id="layoutBtn" style="background:#7d5d2e; border:none;">Layout</button>
-    <button id="resetBtn" style="background:#b34e4e;">Reset</button>
-    <button id="logoutBtn">Keluar</button>
-</div>
-
-<div id="pageContent" style="display:none;">
-    <!-- Konten akan diisi oleh JavaScript dari API -->
+<!-- Konten website akan diisi oleh JavaScript -->
+<div id="pageContent"></div>
+<div class="footer" id="footer">
+    <p>&copy; 2025 Pisgah Bisdac Church — Melayani dengan sepenuh hati.</p>
 </div>
 
 <script>
     let token = null;
     let editMode = false;
     let currentContent = null;
+    let isAdmin = false;
 
-    async function apiCall(url, method, body, needAuth = true) {
+    // Helper API
+    async function apiCall(url, method, body, needAuth = false) {
         const headers = { 'Content-Type': 'application/json' };
         if (needAuth && token) headers['Authorization'] = `Bearer ${token}`;
         const res = await fetch(url, { method, headers, body: body ? JSON.stringify(body) : undefined });
         return res.json();
     }
 
-    async function login() {
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-        const res = await apiCall('/api/login', 'POST', { username, password }, false);
-        if (res.success) {
-            token = res.token;
-            document.getElementById('loginModal').style.display = 'none';
-            document.getElementById('adminToolbar').style.display = 'flex';
-            loadContent();
-            document.getElementById('pageContent').style.display = 'block';
-        } else {
-            alert('Login gagal');
-        }
-    }
-
+    // Tampilkan konten dari server
     async function loadContent() {
         const res = await apiCall('/api/content', 'GET', null, false);
         if (res.success) {
             currentContent = res.content;
             renderPage(currentContent);
+        } else {
+            document.getElementById('pageContent').innerHTML = '<p>Gagal memuat data.</p>';
         }
     }
 
     function renderPage(content) {
         const container = document.getElementById('pageContent');
-        // build HTML based on content data
         container.innerHTML = `
             <div class="hero">
                 <div class="container">
-                    <h1 class="editable-text" data-field="churchName">${content.churchName}</h1>
-                    <p class="editable-text" data-field="tagline">${content.tagline}</p>
-                    <div class="editable-text" data-field="verse">${content.verse}</div>
-                    <div class="editable-text" data-field="promoText">${content.promoText}</div>
+                    <h1 class="editable-text" data-field="churchName">${escapeHtml(content.churchName)}</h1>
+                    <p class="editable-text" data-field="tagline">${escapeHtml(content.tagline)}</p>
+                    <div class="verse editable-text" data-field="verse">${content.verse}</div>
+                    <div class="editable-text" data-field="promoText" style="margin-top: 1rem;">${escapeHtml(content.promoText)}</div>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="#" class="btn"><i class="fas fa-play-circle"></i> TONTON SEKARANG</a>
+                        <a href="#" class="btn btn-outline"><i class="fas fa-users"></i> Join Live Service</a>
+                    </div>
                 </div>
             </div>
             <div class="container">
-                <h2>Jadwal Ibadah</h2>
+                <h2><i class="fas fa-calendar-alt"></i> JADWAL IBADAH</h2>
                 <table class="schedule-table">
                     <thead><tr><th>Ibadah</th><th>Waktu</th><th>Lokasi</th></tr></thead>
                     <tbody id="scheduleBody">
-                        ${content.schedule.map(row => `<tr><td class="editable-schedule">${row[0]}</td><td class="editable-schedule">${row[1]}</td><td class="editable-schedule">${row[2]}</td></tr>`).join('')}
+                        ${content.schedule.map(row => `<tr><td class="editable-schedule">${escapeHtml(row[0])}</td><td class="editable-schedule">${escapeHtml(row[1])}</td><td class="editable-schedule">${escapeHtml(row[2])}</td></tr>`).join('')}
                     </tbody>
                 </table>
-                <h2>Ministries</h2>
+
+                <h2 style="margin-top: 3rem;">LAYANAN KAMI</h2>
                 <div class="grid-3" id="ministriesGrid">
-                    ${content.ministries.map(m => `<div class="card"><i class="${m.icon}"></i><h3 class="editable-ministry-title">${m.title}</h3><p class="editable-ministry-desc">${m.desc}</p></div>`).join('')}
+                    ${content.ministries.map(m => `
+                        <div class="card">
+                            <i class="${m.icon}"></i>
+                            <h3 class="editable-ministry-title">${escapeHtml(m.title)}</h3>
+                            <p class="editable-ministry-desc">${escapeHtml(m.desc)}</p>
+                        </div>
+                    `).join('')}
                 </div>
-                <h2>Tentang Kami</h2>
+
+                <h2 style="margin-top: 3rem;">TENTANG KAMI</h2>
                 <div class="grid-3" id="aboutGrid">
-                    ${content.aboutCards.map(c => `<div class="card"><i class="${c.icon}"></i><h3 class="editable-about-title">${c.title}</h3><p class="editable-about-desc">${c.desc}</p></div>`).join('')}
+                    ${content.aboutCards.map(c => `
+                        <div class="card">
+                            <i class="${c.icon}"></i>
+                            <h3 class="editable-about-title">${escapeHtml(c.title)}</h3>
+                            <p class="editable-about-desc">${escapeHtml(c.desc)}</p>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div style="background: #fcf7f0; border-radius: 40px; padding: 2rem; text-align: center; margin: 3rem 0;">
+                    <i class="fas fa-heart" style="color: var(--accent-gold); font-size: 2rem;"></i>
+                    <h3>KAMI DI SINI UNTUK ANDA</h3>
+                    <p>Terhubung. Berdoa. Bertumbuh. Kami berjalan bersama Anda.</p>
                 </div>
             </div>
         `;
+        // Terapkan layout yang tersimpan
         applyLayout(content.layout);
-        if (editMode) enableEditing(true);
+        if (editMode && isAdmin) enableEditing(true);
+    }
+
+    function escapeHtml(str) {
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+            return c;
+        });
     }
 
     function applyLayout(layout) {
         const ministryGrid = document.getElementById('ministriesGrid');
         const aboutGrid = document.getElementById('aboutGrid');
-        if (layout.ministryGrid) ministryGrid.style.gridTemplateColumns = `repeat(${layout.ministryGrid}, 1fr)`;
-        if (layout.aboutGrid) aboutGrid.style.gridTemplateColumns = `repeat(${layout.aboutGrid}, 1fr)`;
-        // theme
+        if (ministryGrid && layout.ministryGrid) {
+            ministryGrid.style.gridTemplateColumns = `repeat(${layout.ministryGrid}, 1fr)`;
+        }
+        if (aboutGrid && layout.aboutGrid) {
+            aboutGrid.style.gridTemplateColumns = `repeat(${layout.aboutGrid}, 1fr)`;
+        }
         const root = document.documentElement;
-        if (layout.theme === 'green') { root.style.setProperty('--primary-green', '#2c3e2f'); root.style.setProperty('--accent-gold', '#c59b3c'); }
-        else if (layout.theme === 'blue') { root.style.setProperty('--primary-green', '#1e4a6b'); root.style.setProperty('--accent-gold', '#9ab3d5'); }
-        else if (layout.theme === 'burgundy') { root.style.setProperty('--primary-green', '#6b2e3e'); root.style.setProperty('--accent-gold', '#cfa87c'); }
+        if (layout.theme === 'green') {
+            root.style.setProperty('--primary-green', '#2c3e2f');
+            root.style.setProperty('--accent-gold', '#c59b3c');
+        } else if (layout.theme === 'blue') {
+            root.style.setProperty('--primary-green', '#1e4a6b');
+            root.style.setProperty('--accent-gold', '#9ab3d5');
+        } else if (layout.theme === 'burgundy') {
+            root.style.setProperty('--primary-green', '#6b2e3e');
+            root.style.setProperty('--accent-gold', '#cfa87c');
+        }
     }
 
     function enableEditing(enable) {
         editMode = enable;
-        document.querySelectorAll('.editable-text, .editable-schedule, .editable-ministry-title, .editable-ministry-desc, .editable-about-title, .editable-about-desc').forEach(el => {
-            if (enable) el.setAttribute('contenteditable', 'true');
-            else el.removeAttribute('contenteditable');
+        const selectors = '.editable-text, .editable-schedule, .editable-ministry-title, .editable-ministry-desc, .editable-about-title, .editable-about-desc';
+        document.querySelectorAll(selectors).forEach(el => {
+            if (enable) {
+                el.setAttribute('contenteditable', 'true');
+                el.classList.add('editable');
+            } else {
+                el.removeAttribute('contenteditable');
+                el.classList.remove('editable');
+            }
         });
     }
 
-    async function saveAll() {
-        // update churchName, tagline, dll
+    async function saveAllChanges() {
+        if (!isAdmin) return alert('Anda harus login sebagai admin');
+        // 1. Simpan teks biasa
         const fields = ['churchName', 'tagline', 'verse', 'promoText'];
         for (let field of fields) {
             const el = document.querySelector(`[data-field="${field}"]`);
@@ -147,17 +358,17 @@
                 await apiCall('/api/update-content', 'POST', { field, value: el.innerHTML }, true);
             }
         }
-        // update schedule
+        // 2. Simpan schedule
         const scheduleRows = [...document.querySelectorAll('#scheduleBody tr')].map(tr => [...tr.querySelectorAll('td')].map(td => td.innerText));
         await apiCall('/api/update-content', 'POST', { field: 'schedule', value: scheduleRows }, true);
-        // update ministries
+        // 3. Simpan ministries
         const ministries = [...document.querySelectorAll('#ministriesGrid .card')].map(card => ({
             icon: card.querySelector('i').className,
             title: card.querySelector('.editable-ministry-title').innerText,
             desc: card.querySelector('.editable-ministry-desc').innerText
         }));
         await apiCall('/api/update-content', 'POST', { field: 'ministries', value: ministries }, true);
-        // update aboutCards
+        // 4. Simpan aboutCards
         const aboutCards = [...document.querySelectorAll('#aboutGrid .card')].map(card => ({
             icon: card.querySelector('i').className,
             title: card.querySelector('.editable-about-title').innerText,
@@ -168,26 +379,82 @@
     }
 
     async function resetToDefault() {
-        if (confirm('Reset semua data ke default?')) {
+        if (!isAdmin) return;
+        if (confirm('Reset semua data ke default? Semua perubahan akan hilang.')) {
             await apiCall('/api/reset', 'POST', {}, true);
             loadContent();
         }
     }
 
-    document.getElementById('loginBtn').onclick = login;
-    document.getElementById('toggleEditBtn').onclick = () => enableEditing(!editMode);
-    document.getElementById('saveBtn').onclick = saveAll;
-    document.getElementById('resetBtn').onclick = resetToDefault;
-    document.getElementById('logoutBtn').onclick = () => location.reload();
-    document.getElementById('layoutBtn').onclick = () => {
-        const newMinistry = prompt('Jumlah kolom Ministries (2/3/4):', currentContent.layout.ministryGrid);
-        const newAbout = prompt('Jumlah kolom About (2/3):', currentContent.layout.aboutGrid);
-        const theme = prompt('Tema (green/blue/burgundy):', currentContent.layout.theme);
+    // Login Modal
+    function showLoginModal() {
+        const modalDiv = document.createElement('div');
+        modalDiv.className = 'modal';
+        modalDiv.id = 'loginModal';
+        modalDiv.innerHTML = `
+            <div class="modal-content">
+                <i class="fas fa-lock" style="font-size: 2rem; color:var(--accent-gold);"></i>
+                <h3>Admin Login</h3>
+                <input type="text" id="loginUsername" placeholder="Username" value="admin">
+                <input type="password" id="loginPassword" placeholder="Password">
+                <button id="modalLoginBtn" class="btn" style="background: var(--primary-green); width:100%;">Masuk</button>
+                <button id="modalCloseBtn" style="margin-top: 10px; background:transparent; border:none;">Tutup</button>
+            </div>
+        `;
+        document.body.appendChild(modalDiv);
+        document.getElementById('modalLoginBtn').onclick = async () => {
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+            const res = await apiCall('/api/login', 'POST', { username, password }, false);
+            if (res.success) {
+                token = res.token;
+                isAdmin = true;
+                document.getElementById('adminLoginBtn').style.display = 'none';
+                document.getElementById('adminToolbar').style.display = 'flex';
+                modalDiv.remove();
+                alert('Login berhasil! Klik Edit Mode untuk mulai mengedit.');
+            } else {
+                alert('Login gagal, periksa username/password');
+            }
+        };
+        document.getElementById('modalCloseBtn').onclick = () => modalDiv.remove();
+    }
+
+    // Layout modal
+    function showLayoutModal() {
+        const currentLayout = currentContent.layout;
+        const newMinistry = prompt('Jumlah kolom Ministries (2/3/4):', currentLayout.ministryGrid);
+        const newAbout = prompt('Jumlah kolom About (2/3):', currentLayout.aboutGrid);
+        const theme = prompt('Tema (green/blue/burgundy):', currentLayout.theme);
         if (newMinistry && newAbout && theme) {
             apiCall('/api/update-layout', 'POST', { ministryGrid: newMinistry, aboutGrid: newAbout, theme }, true);
-            loadContent();
+            loadContent(); // reload untuk terapkan layout
         }
-    };
+    }
+
+    // Event listeners setelah DOM siap
+    document.addEventListener('DOMContentLoaded', () => {
+        loadContent();
+
+        document.getElementById('adminLoginBtn').onclick = showLoginModal;
+
+        document.getElementById('toggleEditBtn').onclick = () => {
+            if (!isAdmin) return alert('Anda belum login');
+            enableEditing(!editMode);
+        };
+        document.getElementById('saveBtn').onclick = saveAllChanges;
+        document.getElementById('resetBtn').onclick = resetToDefault;
+        document.getElementById('layoutBtn').onclick = showLayoutModal;
+        document.getElementById('logoutBtn').onclick = () => {
+            token = null;
+            isAdmin = false;
+            editMode = false;
+            document.getElementById('adminToolbar').style.display = 'none';
+            document.getElementById('adminLoginBtn').style.display = 'flex';
+            enableEditing(false);
+            alert('Anda telah logout.');
+        };
+    });
 </script>
 </body>
 </html>
